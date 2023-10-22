@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class QuizServiceImpl implements QuizServices {
 
-    private QuizRepository quizRepository;
+    private final QuizRepository quizRepository;
     @Autowired
     public QuizServiceImpl(QuizRepository quizRepository){
         this.quizRepository=quizRepository;
