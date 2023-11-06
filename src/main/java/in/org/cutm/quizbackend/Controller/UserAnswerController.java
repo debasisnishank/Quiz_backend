@@ -50,5 +50,23 @@ public class UserAnswerController {
 
         return userAnswerRepository.save(userAnswer);
     }
+    @GetMapping("/{id}")
+    public UserAnswers getUserAnswerById(@PathVariable Long id) {
+        return userAnswerService.getUserAnswerById(id);
+    }
 
+    @PutMapping("/{id}")
+    public UserAnswers updateUserAnswer(@PathVariable Long id, @RequestBody UserAnswers userAnswer) {
+        return userAnswerService.updateUserAnswer(id, userAnswer);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUserAnswer(@PathVariable Long id) {
+        userAnswerService.deleteUserAnswer(id);
+    }
+
+    @GetMapping
+    public List<UserAnswers> getAllUserAnswers() {
+        return userAnswerService.getAllUserAnswers();
+    }
 }
