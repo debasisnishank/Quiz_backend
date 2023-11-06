@@ -35,6 +35,20 @@ public class UserAnswerController {
     public UserAnswerController(UserAnswerService userAnswerService) {
         this.userAnswerService = userAnswerService;
     }
+     @PostMapping
+    public UserAnswers createUserAnswer(@RequestBody UserAnswersDto userAnswerDto) {
+        Users user = userRepository.findById(userAnswerDto.getUserId())
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
+        Questions question = questionRepository.findById(userAnswerDto.getQuestionId())
+                .orElseThrow(() -> new IllegalArgumentException("Question not found"));
+
+        UserAnswers userAnswer = new UserAnswers();
+        userAnswer.setUsers(user);
+        userAnswer.setQuestions(question);
+        userAnswer.setSelectedOption(userAnswerDto.getSelectedOption());
+
+        return userAnswerRepository.save(userAnswer);
+    }
 
 }
