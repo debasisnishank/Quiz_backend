@@ -2,7 +2,6 @@ package in.org.cutm.quizbackend.Controller;
 
 
 import in.org.cutm.quizbackend.Entity.Users;
-import in.org.cutm.quizbackend.Service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
