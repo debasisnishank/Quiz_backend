@@ -1,13 +1,13 @@
 package in.org.cutm.quizbackend.Controller;
 
-
 import in.org.cutm.quizbackend.Entity.Users;
+import in.org.cutm.quizbackend.Service.UserService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
     private final UserService userService;
 
@@ -18,7 +18,7 @@ public class UserController {
     @PostMapping
     public Users createUser(@RequestBody Users user) {
         return userService.createUser(user);
-        
+
     }
 
     @GetMapping("/{id}")
@@ -41,4 +41,3 @@ public class UserController {
         return userService.getAllUsers();
     }
 }
-
